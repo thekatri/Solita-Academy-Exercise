@@ -1,0 +1,17 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model electricitydata {
+  id                BigInt    @id
+  date              DateTime? @db.Date
+  starttime         DateTime? @db.Timestamp(6)
+  productionamount  Decimal?  @db.Decimal(11, 5)
+  consumptionamount Decimal?  @db.Decimal(11, 3)
+  hourlyprice       Decimal?  @db.Decimal(6, 3)
+}
